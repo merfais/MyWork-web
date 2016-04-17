@@ -1,0 +1,51 @@
+.move {
+	position: absolute;
+	top: 40px;
+	padding: 20px;
+	width: 820px;
+	border: 1px solid #CCCCCC;
+	background: #EEEEEE;
+}
+
+.move a {
+	float: left;
+	width: 160px;
+	height: 170px;
+	margin: 10px 20px;
+	background: #FFFFFF;
+	list-style: none;
+	text-align: center;
+	text-decoration: none;
+	position: relative;
+	color: #9c9c9c;
+	border: 1px solid #DDDDDD;
+	border-radius: 5px;
+	/*padding-top: 40px;*/
+	font-size: 15px;
+	line-height: 25px;
+	overflow: hidden;
+}
+
+.move a:hover{
+	color: red;
+}
+
+
+.move a i {
+	display: inline-block;
+	opacity: 1;
+	filter: alpha(opacity: 100);
+	position: absolute;
+	top: 20px;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+
+}
+
+.move a p {
+	font: "微软雅黑";
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}

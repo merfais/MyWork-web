@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/event.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function showMess() {
+				alert("hello word");
+			}
+			 
+			function showEvent (eve) {
+				var eve = eve|| window.event;
+				alert(eve.type);
+				alert(eve.target|| eve.srcElement);
+				eve.cancelBubble = true;	//阻止冒泡 IE11以下
+				eve.stopPropagation();	//阻止冒泡
+			}
+			
+			function showBox () {
+				alert("show box");
+			}
+//			var eventUtil = {
+//				addHandler: function(elementer, eventer, handler) {
+//					//element：元素，event：不使用on前缀的事件名，handler：事件处理程序
+//					if (elementer.addEventListener) { //DOM2级事件处理
+//						elementer.addEventListener(eventer, handler, false);
+//					} else if (elementer.attachEvent) { //IE事件处理
+//						elementer.attachEvent("on" + eventer, handler);
+//					} else { //DOM0级事件处理
+//						elementer["on" + eventer] = handler;
+//						// element[“onclick”] === element.onclick
+//					}
+//				},
+//				removeHandler: function(elementer, eventer, handler) {
+//					if (elementer.removeEventListener) {
+//						elementer.removeEventListener(eventer, handler, false);
+//					} else if (elementer.detachEvent) {
+//						elementer.detachEvent("on" + eventer, handler);
+//					} else {
+//						elementer["on" + eventer] = null;
+//					}
+//				}
+//			}
+			
+		
+			function test() {
+				var btn2 = document.getElementById("btn2");
+				var btn3 = document.getElementById("btn3");
+				var btn1 = document.getElementById("btn1");
+				var box = document.getElementById("box");
+				//btn2.addEventListener("click", showMess, false);
+				eventUtil.addHandler(btn2, "click", showMess);
+				eventUtil.addHandler(btn3,"click",showEvent);
+				eventUtil.addHandler(box,"click",showBox);
+				eventUtil.addHandler(btn1, "click", function (e) {
+					e = eventUtil.getEvent(e);
+					alert(eventUtil.getType(e));
+					alert(eventUtil.getElement(e).nodeName);
+					eventUtil.stopPropagation(e);
+				})
+			}
+		</script>
+	</head>
+
+	<body onload="test()">
+		<div id="box">
+			<input type="button" name="按钮" id="btn1" value="安安" />
+			<input type="button" name="btn2" id="btn2" value="按钮" />
+			<input type="button" name="btn3" id="btn3" value="按钮" />
+		</div>
+	</body>
+
+</html>

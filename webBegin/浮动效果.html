@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap{
+				background: #0cc;
+				margin: 0 auto;
+				width: 800px;
+			}
+			#header{
+				height: 100px;
+				width: 100%;
+				background: #fc0;
+			}
+			#mainbody{
+				width: 100%;
+				background: #f3c;
+				height: 10px;
+				overflow: hidden;/*清除float属性，使用clear:both无效*/
+				
+			}
+			#footer{
+				clear: both;/*使用clear:both无效，
+							并不能清除紧邻元素mainbody
+							子元素带来的浮动效果，
+							应在mainbody中使用overflow:hidden*/
+			}
+			.left{
+				width: 200px;
+				background: #ffa;
+				
+				float: left;
+				margin-right: 10px;
+			}
+			.right{
+				width: 590px;
+				
+				background: #aa2;
+				float: left;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header">头部</div>
+			<div id="mainbody">
+				<div class="left">left</div>
+				<div class="right">right</div>
+			</div>
+			<div id="footer">foot</div>
+			
+		</div>
+	</body>
+</html>

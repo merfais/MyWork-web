@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/测试01.css" />
+		<script type="text/javascript">
+			window.onload = function() {
+				function curry() {
+					alert('arguments:' + arguments);
+					alert('typeof arguments:' + typeof arguments);
+					alert('arguments instanceof Array:' + (arguments instanceof Array));
+					var args = Array.prototype.slice.call(arguments, 0);
+					alert('args:' + args);
+					alert('typeof args:' + typeof args);
+					alert('args instanceof Array:' + (args instanceof Array));
+				}
+				curry("s", "a", "d");
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="box1">nihao</div>
+		<div class="box2">wohao</div>
+		<p id="clearfloat">紧邻标签</p>
+		<p id="clear">非紧邻元素非紧邻元素非紧邻元素非紧邻元素非紧邻元素非紧邻元素非紧邻元素非紧邻元素4 邻元素非紧邻元素非紧邻元素非紧邻元素邻元素非紧邻元素非紧邻元素非紧邻元素邻元素非紧邻元素非紧邻元素非紧邻元素
+		</p>
+
+	</body>
+
+</html>

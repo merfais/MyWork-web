@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box1 {
+				background: red;
+				height: 60px;
+				position: relative;
+				top: 5px;
+				left: 10px;
+			}
+			
+			.box2 {
+				background: gray;
+				height: 70px;
+				position: absolute;
+			}
+			
+			.box3 {
+				background: greenyellow;
+				height: 80px;
+			}
+			.box{
+				position: relative;
+				height: 90px;
+				background: #eea;
+			}
+			.box4{
+				position: absolute;
+				left: 10px;
+				top: 10px;
+				background: #112233;
+			}
+			.box6{
+				position: relative;
+				background: #445566;
+			}
+			.wrap{
+				width: 80%;
+				margin: 0 auto;
+			}
+			.head{
+				background: #EEEEAA;
+				height: 100px;
+			}
+			.body{
+				position: relative;
+				background: black;
+			}
+			.left{
+				height: 500px;
+				width: 200px;
+				background: #887752;
+			}
+			.right{
+				position: absolute;
+				top:1px;
+				margin-left: 210px;
+				background: #abc123;
+			}
+			.foot{
+				background: #456465;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box1">box1</div>
+		<div class="box">
+			<div class="box2">box2</div>
+		</div>
+		<div class="box3">box3</div>
+		<div class="box3 box6">
+		<div class="box3 box4">box4</div>
+		</div>
+		<div class="box3">
+			<br />
+			<br />
+			<p>以下是示范使用absolute绝对定位实现两列布局</p>
+		</div>
+		<div class="wrap">
+			<div class="head">练习测试头部</div>
+			<div class="body">
+				<div class="left">
+					<div>左部导航<br/>
+						固定宽度的部分高度一定要大于自适应宽度的部分
+					</div>
+				</div>
+				<div class="right">
+					<div>自适应宽度部分自适应宽度部分自适应宽度部分自适应宽度部分
+					自适应宽度部分自适应宽度部分自适应宽度部分自适应宽度部分自适应宽度部分
+					自适应宽度部分自适应宽度部分自适应宽度部分自适应宽度部分
+					自适应宽度部分自适应宽度部分自适应宽度部分
+					自适应宽度部分自适应宽度部分
+					自适应宽度部分
+					</div>
+				</div>
+			</div>
+			<div class="foot">测试用底部</div>
+		</div>
+		
+		
+	</body>
+
+</html>

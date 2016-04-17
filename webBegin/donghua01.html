@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.left {
+				background: #CCCCCC;
+				width: 300px;
+				height: 170px;
+				left: -300px;
+				position: relative;
+				float: left;
+			}
+			
+			#fuyan {
+				background: #807A62;
+				position: absolute;
+				top: 100px;
+				left: 300px;
+				height: 60px;
+				line-height: 30px;
+				width: 30px;
+				font-size: 20px;
+			}
+			
+			.alph {
+				width: 300px;
+				height: 100px;
+				background: blue;
+				clear: both;
+				filter: alpha(opacity: 30);
+				opacity: 0.3;
+				margin-top: 10px;
+				position: relative;
+			}
+			
+			ul {
+				list-style: none;
+				margin-top: 10px;
+				clear: both;
+			}
+			
+			ul li {
+				width: 200px;
+				height: 100px;
+				background: #344566;
+				margin-bottom: 20px;
+				border: 3px solid yellow;
+			}
+		</style>
+
+		<script type="text/javascript">
+			window.onload = function() {
+				var lftBar = document.getElementById("left");
+				var alphDiv = document.getElementById("alph");
+				var bianDiv = document.getElementById("biansu")
+				lftBar.onmouseover = function() {
+					divMove(0);
+				};
+				lftBar.onmouseout = function() {
+					divMove(0 - lftBar.clientWidth);
+				};
+				alphDiv.onmouseover = function() {
+					divAlph(100);
+				};
+				alphDiv.onmouseout = function() {
+					divAlph(30);
+				};
+				bianDiv.onmouseover = function() {
+					divBian(0);
+				};
+				bianDiv.onmouseout = function() {
+					divBian(0 - bianDiv.clientWidth);
+				};
+				var lis = document.getElementsByTagName("li");
+				for (var i = 0; i < lis.length; i++) {
+					var ltemp = lis[i];
+					ltemp.timer = null; //在多物体同时运动，需要单独定义需要的全局变量。
+					ltemp.onmouseover = function() {
+						var that = this
+						move2(this, {
+							width: 300,
+							height: 101
+						}, function() {
+							move1(that, "opacity", 30);
+						});
+					}
+					ltemp.onmouseout = function() {
+						//						liMove0(this, 200);
+						move1(this, "width", 100);
+					}
+				}
+			}
+			var timer = null;
+
+			function divMove(targ) {
+				clearInterval(timer);
+				var lftBar = document.getElementById("left");
+				//改变速度的正负值，可使div移入移出方向，
+				//改变速度的大小值，可改变移入移出的速度，但speed必须是target的约数，否则，会出现bug
+				//这个案例中speed值，取值方法有问题，会出现bug
+				//var speed = Math.ceil((targ - lftBar.offsetLeft -1) / lftBar.clientWidth);	
+				//对于speed值在正数时向上去整，在负数时向下取整，可解决以上问题。
+				var speed = 0;
+				if (targ > lftBar.offsetLeft) {
+					speed = 10;
+				} else {
+					speed = -10;
+				}
+				timer = setInterval(function() {
+					if (lftBar.offsetLeft == targ) {
+						clearInterval(timer);
+						lftBar.style.left = targ + "px";
+					} else {
+						lftBar.style.left = lftBar.offsetLeft + speed + "px";
+					}
+				}, 10);
+			}
+			var al = 30;
+			var timer2 = null;
+
+			function divAlph(targ) {
+				clearInterval(timer2);
+				var lftBar = document.getElementById("alph");
+				var speed = 0;
+				if (targ > al) {
+					speed = 5;
+				} else {
+					speed = -5;
+				}
+				timer2 = setInterval(function() {
+					if (al == targ) {
+						clearInterval(timer2);
+						lftBar.style.opacity = targ / 100;
+						lftBar.style.filter = "alpha(opacity:" + targ + ")";
+					} else {
+						al += speed;
+						lftBar.style.opacity = al / 100;
+						lftBar.style.filter = "alpha(opacity" + al + ")";
+					}
+				}, 10);
+			}
+			var timer3 = null;
+
+			function divBian(targ) {
+				clearInterval(timer3);
+				var lftBar = document.getElementById("biansu");
+				timer3 = setInterval(function() {
+					var offlf = parseFloat(lftBar.offsetLeft);
+					var speed = (targ - lftBar.offsetLeft) / 10;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					if (lftBar.offsetLeft == targ) {
+						clearInterval(timer3);
+						lftBar.style.left = targ + "px";
+					} else {
+						lftBar.style.left = lftBar.offsetLeft + speed + "px";
+					}
+				}, 10);
+			}
+			//var timer4 = null;
+			function liMove(obj, targ) {
+				clearInterval(obj.timer4);
+				obj.timer4 = setInterval(function() {
+					var speed = (targ - obj.offsetWidth) / 10;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					if (obj.offsetWidth == targ) {
+						clearInterval(obj.timer4);
+					} else {
+						obj.style.width = obj.offsetWidth + speed + "px";
+						console.log("styleWidth = " + parseInt(obj.style.width) +
+							"_____offsetWidth = " + obj.offsetWidth + "___ getstyle = " +
+							getStyle(obj, "width"));
+					}
+				}, 10);
+			}
+
+			function liMove0(obj, targ) {
+				clearInterval(obj.timer4);
+				obj.timer4 = setInterval(function() {
+					var offwith = parseInt(getStyle(obj, "width"));
+					//var offwith = parseInt(obj.style.width); 这种方式是取不到非内联的样式的
+					//offsetWidth 包含边框border 内边距padding 外边距margin 数据，不够准确
+					//使用 parseInt（style.width）取到真正的宽度值。
+					var speed = (targ - offwith) / 10;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					if (offwith == targ) {
+						clearInterval(obj.timer4);
+					} else {
+						obj.style.width = offwith + speed + "px";
+						//						console.log("styleWidth = " + parseInt(obj.style.width) +
+						//						"_____offsetWidth = " + obj.offsetWidth + "___ getstyle = " +
+						//						getStyle(obj, "width"));
+					}
+				}, 10);
+			}
+			/*
+			 单运动框架
+			 参数1：需要运动的元素
+			 参数2：需要运动的样式
+			 参数3：需要运动的目标值
+			 */
+			function move0(obj, attr, target) {
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function() {
+					var offset = parseInt(getStyle(obj, attr));
+					var speed = (target - offset) / 10;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					if (offset == target) {
+						clearInterval(obj.timer);
+					} else {
+						obj.style[attr] = offset + speed + "px";
+					}
+				}, 10);
+			}
+			/*
+			 链式运动框架
+			 参数1：需要运动的元素
+			 参数2：需要运动的样式
+			 参数3：需要运动的目标值
+			 参数4：下一个运动的回调函数
+			 */
+			function move1(obj, attr, target, fn) {
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function() {
+					var offset = 0;
+					if (attr == "opacity") {
+						offset = Math.round(parseFloat(getStyle(obj, attr)) * 100);
+					} else {
+						offset = parseInt(getStyle(obj, attr));
+					}
+					if (offset == target) {
+						clearInterval(obj.timer);
+						if (fn) { //第一个运动停止，开始第二个运动
+							fn();
+						}
+					} else {
+						var speed = (target - offset) / 10;
+						speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+						if (attr == "opacity") {
+							obj.style.opacity = (offset + speed) / 100;
+							obj.style.filter = "alpha(opacity:" + offset + speed + ")";
+						} else {
+							obj.style[attr] = offset + speed + "px";
+						}
+					}
+				}, 10);
+			}
+			/*
+			 同时运动
+			 参数1：需要运动的元素
+			 参数2：需要运动的样式及目标是，JSON{attribute：value}
+			 参数3：下一个运动的回调函数
+			 */
+			function move2(obj, jsonAttrs, fn) {
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function() {
+					var flag = true;
+					for (var att in jsonAttrs) {
+						var offset = 0;
+						if (att == "opacity") {
+							offset = Math.round(parseFloat(getStyle(obj, att)) * 100);
+						} else {
+							offset = parseInt(getStyle(obj, att));
+						}
+						if (offset != jsonAttrs[att]) {
+							flag = false;
+							var speed = (jsonAttrs[att] - offset) / 10;
+							speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+							if (att == "opacity") {
+								obj.style.opacity = (offset + speed) / 100;
+								obj.style.filter = "alpha(opacity:" + offset + speed + ")";
+							} else {
+								obj.style[att] = offset + speed + "px";
+							}
+						}
+					}
+					if (flag) {
+						clearInterval(obj.timer);
+						if (fn) { //第一个运动停止，开始第二个运动
+							fn();
+						}
+					}
+				}, 10);
+			}
+			/*
+			  封装兼容浏览器，取得样式的函数
+			 */
+			function getStyle(obj, attr) {
+				if (obj.currentStyle) {
+					return obj.currentStyle[attr]; //IE
+				} else {
+					return getComputedStyle(obj, null)[attr]; //firfox
+					//参数列表分别为 需取得样式的元素，一个伪类字符串如“：after”，需要获取的样式字符串
+					//对于第二个参数，没有时，使用null替代
+					//第三个参数，可以使用getComputedStyle(obj, null).attr 方式。
+					//对于如font-size这样的参数，使用fontSize获取，
+					//其他如，border-Top-Width,也可以取到，但border不是所有浏览器都能适用;
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="left" class="left">
+			<span id="fuyan">附言</span>
+		</div>
+		<div class="alph" id="alph">
+
+		</div>
+		<div id="biansu" class="left">
+			<span id="fuyan">附言</span>
+		</div>
+
+		<ul>
+			<li id="1"></li>
+			<li id="2" </li>
+				<li id="3"></li>
+		</ul>
+	</body>
+
+</html>

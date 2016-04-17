@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				font-size: 14px;
+			}
+			
+			.shuban {
+				list-style: none;
+				width: 100px;
+			}
+			
+			.shuban a {
+				text-decoration: none;
+				text-indent: 10px;
+				display: block;
+				height: 30px;
+				line-height: 30px;
+				width: 100px;
+				background: gray;
+				margin-bottom: 1px;
+			}
+			.shuban a:hover{
+				color: white;
+				background: red;
+			}
+			.hengban {
+				list-style: none;
+				height: 97px;
+				border-bottom: 5px solid #FF0000;
+			}
+			
+			.hengban a {
+				text-align: center;
+				text-decoration: none;
+				display: block;
+				height: 57px;
+				line-height: 57px;
+				width: 130px;
+				margin-bottom: 1px;
+				background-image: url(img/img4.jpg);
+			}
+			
+			.hengban li {
+				float: left;
+				margin-top: 40px;
+			}
+			
+			.hengban a:hover, .hengban .on {
+				background-image: url(img/img4.jpg);
+				color: #fff;
+				background-position: 0px -40px;
+				/*a标签本来就有背景图片，所以在hover时使图片移动，露出需要显示的部分
+				 在这个案例中，图片本来高97px，实际设置a.height57px,
+				则有40px部分被隐藏，当hover时position-40px，
+				露出下部分显示效果，隐藏上部分，则达到鼠标悬停效果*/
+			}
+			
+			.hengban2 {
+				list-style: none;
+				height: 30px;
+				border-bottom: 5px solid #FF0000;
+				margin-left: 20px;
+			}
+			
+			.hengban2 a {
+				text-align: center;
+				text-decoration: none;
+				display: block;
+				height: 30px;
+				line-height: 30px;
+				width: 120px;
+				margin: 0px 1px;
+				background:gray;
+			}
+			
+			.hengban2 li {
+				float: left;
+			}
+			
+			.hengban2 .on, .hengban2 a:hover {
+				background:red;
+				height: 40px;
+				color: #fff;
+				margin-top: -10px;
+				line-height: 40px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<ul class="shuban">
+				<li><a href="#">首       页</a></li>
+				<li><a href="#">新闻快讯</a></li>
+				<li><a href="#">产品展示</a></li>
+				<li><a href="#">售后服务</a></li>
+				<li><a href="#">联系我们</a></li>
+			</ul>
+			<ul class="hengban">
+				<li><a class="on">首       页</a></li>
+				<li><a href="#">新闻快讯</a></li>
+				<li><a href="#">产品展示</a></li>
+				<li><a href="#">售后服务</a></li>
+				<li><a href="#">联系我们</a></li>
+			</ul>
+			<br />
+			<br />
+			<ul class="hengban2">
+				<li><a class="on">首       页</a></li>
+				<li><a href="#">新闻快讯</a></li>
+				<li><a href="#">产品展示</a></li>
+				<li><a href="#">售后服务</a></li>
+				<li><a href="#">联系我们</a></li>
+			</ul>
+		</div>
+	</body>
+
+</html>

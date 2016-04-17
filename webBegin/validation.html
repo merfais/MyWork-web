@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				padding: 10px;
+				height: 30px;
+			}
+			
+			input {
+				margin-left: 20px;
+			}
+			
+			.wrong{
+				color:red;
+			}
+		</style>
+		<script src="js/jquery-1.12.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-validattion-1.15.0/dist/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-validattion-1.15.0/dist/localization/messages_zh.js"></script>
+		<script>
+			$.validator.setDefaults({
+				/*
+				 * 通过验证后运行的函数，可以加上表单提交的方法
+				 */
+				submitHandler: function(form) {
+					//form.submit();	//提交表单
+					//$(form).ajaxSubmit();	//提交表单
+					console.log($("form").serialize());
+				},
+				/*
+				 * 无效表单提交后运行的函数
+				 * 存在无法通过校验的，就会触发此函数
+				 */
+				invalidHandler: function(event, validator) {
+					console.log("错误数：" + validator.numberOfInvalids());
+				}
+			});
+			
+			
+			/*
+			 *jQuery.validator.addMethod(name, method [,message])
+			 * name:方法名称
+			 * method: function(value, element, params)方法逻辑
+			 * ******value 被验证元素的值
+			 * ******element 被验证的元素
+			 * ******params 验证时传入的参数
+			 * message:验证失败时的错误提示消息
+			 */
+			//例子：
+			//自定义名为postcode的规则，目的是校验是否是邮政编码
+			//规则使用正则表达式，返回值为true或者false
+			//在$(".cmxform").validate()函数中使用 postcode:true,来触发规则
+			 $.validator.addMethod("postcode", function (value, element, params) {
+			 	var postcode = /^[0-9]{6}$/;	//正则表达式，数字0~9 共6位
+			 	//this.optional(element),当element为空时，返回true，
+			 	//此处的含义为当值为空，不校验规则，
+			 	//如果没有此语句，则表示此项字段必填，
+			 	//即值为空也会校验规则，规则中要求必须为6位数字,从而使此项为必填项。
+			 	//因此在实际的自定义方法中，都会加入此语句，用required来判定是否必填
+			 	return this.optional(element) || (postcode.test(value));
+			 },"请填写正确的邮政编码");
+			 
+			 //使用参数的例子
+			 //在$(".cmxform").validate()函数中使用 postcode:"中国",来触发规则
+			 //其中“中国”为传入的参数，即params 的值 = "中国"
+			 //在function内可以对params进行校验，从而验证规则是否通过，
+			 //如postcode:6,规则为大于6的数，
+			 //可以在函数内，编写，类似于 value > params 的校验方式。
+			 $.validator.addMethod("postcode", function (value, element, params) {
+			 	var postcode = /^[0-9]{6}$/;	//正则表达式，数字0~9 共6位
+			 	//this.optional(element),当element为空时，返回true，
+			 	//此处的含义为当值为空，不校验规则，
+			 	return this.optional(element) || (postcode.test(value));
+			 },
+			 //此处使用格式化的消息
+			 //参数的值，即为params 传入的值
+			 $.validator.format("请填写正确的{0}邮政编码"));
+			
+			
+			
+			$(function() {
+				$(".cmxform").validate({
+					debug: true,
+					rules: {
+						username: {
+							required: true,
+							minlength: 2,
+							maxlength: 6,
+							//ranglength:[2,5]
+							/*
+							//远程校验，
+							remote:{
+								url:"json/validate.json",	//地址
+								type:"get",	//数据方式
+								data:{	//传送的参数
+									longtime:function () {
+										return +new Date;
+									}
+								}
+							}
+							*/
+						},
+						sex: {},
+						password: {
+							required: true,
+							minlength: 6,
+							maxlength: 18
+						},
+						"confirm-password": { //需要校验的字段名称不是默认值，使用“”包裹，元素中name属性值
+							equalTo: "#password" //校验一致性，使用元素选择器或数值
+						},
+						email: {
+							required: {
+								/*
+								 * 每一个rules里面都隐藏了一个depends属性
+								 * 当depends返回true是则校验此规则，false则不校验
+								 * 
+								 */
+								depends: function(element) {
+									//当password元素被填写时，返回true，校验此规则，否则返回false，不校验
+									return $("#password").is(":filled");
+								}
+							},
+							email: true, //校验email格式
+							minlength: 3,
+							/*
+							 * 对于非布尔的检验规则，使用param参数，来作为返回值
+							 * 同样，当depends为true，返回param值，校验规则
+							 * false，不返回，不校验
+							 */
+							maxlength: {
+								param: 2, //当depends校验为true时，返回param的值。
+								depends: function(element) {
+									//当password元素被填写时，返回true，校验此规则，否则返回false，不校验
+									return $("#password").is(":filled");
+								}
+							}
+						},
+						url: {
+							url: true //校验url地址，需包含http
+						},
+						date: {
+							date: true, //校验日期，格式比较宽泛
+							dateISO: true //校验日期 格式必须为 yyyy-mm-dd
+						},
+						data: {
+							number: true, //校验数字
+							digits: true //校验整数
+						},
+						/*
+						 * 不对某个元素进行校验，使用元素选择器
+						 * 默认值为 ignore:":hidden" 不对隐藏的元素进行校验
+						 */
+						ignore: "#email" //不对email进行校验
+					},
+					messages: {
+						username: {
+							required: "用户名必填",
+							minlength: "不少于两个字符",
+							maxlength: "不多余6个字符",
+							remote: "远程不通过"
+						}
+					},
+					/*
+					 * 使用groups，使检验出错的元素的错误信息显示在同一个地方
+					 * 通常与errorPlacement 搭配使用
+					 */
+					groups: {
+						login: "username password confirm-password"
+					},
+					/*
+					 * 自定义错误信息放在那里
+					 * error : 错误信息
+					 * element ：错误元素
+					 */
+					errorPlacement: function(error, element) {
+						error.insertBefore(".ni"); //使用选择器在“.ni”元素前边插入错误信息
+						//$(".ni").append(error.clone());
+					},
+					/*
+					 * 提交时，是否验证，
+					 * 默认值为true，即提交时需要验证
+					 */
+					//onsubmit:false,	//提交时，不再验证
+					//onfocusout:		//是否在获取焦点时验证
+					//onkeyup:			//是否在敲击键盘时验证
+					//onclick:			//是否在鼠标点击时验证，一般用于checkbox或者radio
+					//focusInvalid:		//提交表单后，未通过验证的表单是否会获得焦点（第一个或提交之前获得焦点的未通过验证的表单）
+					//focusCleanup:		//当未通过验证的元素获得焦点时，是否移出错误提示
+					
+					/*
+					 * 修改错误提示的样式
+					 */
+					errorClass:"wrong",	//指定错误提示的css类名，可以自定义错误提示的样式
+					//validClass:"right",	//指定验证通过的css类名
+					
+					/*
+					 * 设置错误信息显示的细节
+					 */
+					//errorElement:"li",			//使用什么标签标记错误
+					//wrapper:"ul",				//使用设么标签把上面的errorElement包起来
+					//errorLabelContainer:".ni",	//把错误信息统一放在一个容器里
+					//errorContainer:	".ni"		//显示或者隐藏验证信息，可以自动实现有错误信息出现时把容器属性变为显示，无错误隐藏
+					
+					/*
+					 * 可以显示总共有多上个未通过的验证的元素
+					 * 此方法多用于自定义错误提示的显示
+					 * errorMap：是一个key：value的map表，存储着所有出现的错误信息
+					 * errorList：是一个更详细的list表，除包含errorMap外，还有其他信息
+					 */
+					//showErrors:function (errorMap, errorList) {
+					//	console.log(errorMap);
+					//	console.log(errorList);
+					//	//保留默认的显示方式，否则以上的方法则会截断默认的错误显示方式。
+					//	this.defaultShowErrors();	
+					//}，
+					
+					/*
+					 * 要验证的元素通过验证后的动作
+					 */
+					//success:"right",	//可以是一个样式表，即在验证通过后，在包含错误提示的元素上增加此样式
+					//success:function (label) {	//可以是一个方法，自定义验证通过后的执行函数，参数label即包含错误的元素
+					//	label.addClass("right");
+					//},
+					
+					/*
+					 * 为未通过验证的元素增加效果，
+					 * element,被验证的元素
+					 * errorClass，未验证通过时增加的样式
+					 * validClass，验证通过时的样式
+					 */
+					highlight:function(element, errorClass, validClass){
+						$(element).addClass(errorClass).removeClass(validClass);
+						//增加淡出淡入效果
+						$(element).fadeOut().fadeIn();
+					},
+					/*
+					 * 为通过验证的元素增加效果，与highlight同时使用
+					 * element,被验证的元素
+					 * errorClass，未验证通过时的样式
+					 * validClass，验证通过时增加的样式
+					 */
+					unhighlight:function (element, errorClass, validClass) {
+						$(element).addClass(validClass).removeClass(errorClass);
+					}
+					
+					
+					
+					
+				});
+				/*
+				 * valid()方法，
+				 * 检查表单检验的各项是否全部通过
+				 * 全部通过返回true
+				 * 否则返回false
+				 */
+				$("#check").click(function() {
+						alert($(".cmxform").valid() ? "检查通过" : "检查失败");
+					})
+					/*
+					 * rules()方法
+					 * 获取表单元素中的规则，使用表单调用会出错 即：$("form").rules()会出错
+					 * 
+					 * rules("add",{minlength:2,maxlength:10})
+					 * 为表单中的元素 增加规则  例如：
+					 * $("#password").rules("add",{password:true});
+					 * 
+					 * rules("remove", "email minlength")
+					 * 为表单中的元素移出规则 例如
+					 * $("#password").rules("remove","password");
+					 */
+				$(".ni").text(function() {
+					var temp = "";
+					//遍历rules的各个规则，并显示
+					$.each($("#username").rules(), function(key, value) {
+						temp += key;
+						temp += ":";
+						temp += value;
+						temp += "; ";
+					});
+					return temp;
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<form class="cmxform" method="get" action="#">
+			<div id="">
+				<label for="name">名字</label><input type="text" name="username" id="username">
+			</div>
+			<div id="">
+				<label for="sex">性别</label>
+				<label for="male">男</label>
+				<input type="radio" name="sex" value="男" id="male" />
+				<label for="female">女</label>
+				<input type="radio" name="sex" value="女" id="female" />
+			</div>
+			<div id="">
+				<label for="email">邮箱</label><input id="email" type="email" name="email">
+			</div>
+			<div id="">
+				<label for="password">密码</label><input id="password" type="password" name="password">
+			</div>
+			<div id="">
+				<label for="confirmpassword">确认密码</label><input type="password" name="confirm-password">
+			</div>
+			<input type="submit" class="submit" value="提交" />
+			<button id="check">检查表单</button>
+			<div class="ni">
+				nihao
+			</div>
+		</form>
+	</body>
+
+</html>

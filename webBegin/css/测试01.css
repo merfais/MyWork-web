@@ -1,0 +1,20 @@
+.box1 {
+	height: 20px;
+	background: red;
+	float: left;
+}
+
+.box2 {
+	height: 20px;
+	background: blue;
+	float: right;
+}
+
+#clearfloat {
+	clear: both;
+}
+
+#clear {
+	width: 100%;
+	overflow: hidden;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul {
+				list-style: none;
+			}
+			
+			.firstLevelUl {
+				position: relative;
+			}
+			
+			.firstLevelLi {
+				float: left;
+				width: 80px;
+				height: 40px;
+				line-height: 35px;
+				text-align: center;
+				border: 2px solid gray;
+				margin: 0px 5px;
+			}
+			
+			.firstLevelLi span{
+				width: 78px;
+				height: 38px;
+				line-height: 38px;
+				text-align: center;
+				display: block;
+				cursor:default;
+			}
+			
+			.firstLevelLiActive {
+				border-bottom: 2px solid white;
+			}
+			
+			.secoundLevelUl {
+				border: 2px solid gray;
+				position: absolute;
+				left: 10px;
+				top: 42px;
+				width: 300px;
+			}
+			
+			.secoundLevelUlActive {
+				z-index: -1;
+			}
+			
+			.secoundLevelUlHide {
+				display: none;
+			}
+			
+			.secoundLevelUl li {
+				margin-left: -40px;
+			}
+		</style>
+		<script type="text/javascript">
+			function navActive(obj) {
+				var papa = document.getElementById("nav");
+				for (var i = 0; i < papa.childNodes.length; i++) {
+					var chi = papa.childNodes[i];
+					if (chi.nodeName == "LI") {
+						if (obj.parentNode == chi) {
+							chi.className = "firstLevelLi firstLevelLiActive";
+							chi.getElementsByTagName("ul")[0].className = "secoundLevelUl secoundLevelUlActive";
+						} else {
+							chi.className = "firstLevelLi";
+							chi.getElementsByTagName("ul")[0].className = "secoundLevelUl secoundLevelUlHide";
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div>
+			<ul id="nav" class="firstLevelUl">
+				<li class="firstLevelLi ">
+					<span onmouseover="navActive(this)">房产</span>
+					<ul class="secoundLevelUl secoundLevelUlHide">
+						<li><a href="#">275万购昌平邻铁三居 总价20万买一居</a></li>
+						<li><a href="#">200万内购五环三居 140万安家东三环</a></li>
+						<li><a href="#">京首现零首付楼盘 53万购东5环50平</a></li>
+						<li><a href="#">京楼盘直降5000 中信府 公园楼王现房</a></li>
+					</ul>
+				</li>
+				<li class="firstLevelLi firstLevelLiActive">
+					<span onmouseover="navActive(this)">家居</span>
+					<ul class=" secoundLevelUl secoundLevelUlActive ">
+						<li><a href="# ">40平出租屋大改造 美少女的混搭小窝</a></li>
+						<li><a href="# ">经典清新简欧爱家 90平老房焕发新生</a></li>
+						<li><a href="# ">新中式的酷色温情 66平撞色活泼家居</a></li>
+						<li><a href="# ">瓷砖就像选好老婆 卫生间烟道的设计</a></li>
+					</ul>
+				</li>
+				<li class="firstLevelLi ">
+					<span onmouseover="navActive(this)">二手房</span>
+					<ul class="secoundLevelUl secoundLevelUlHide">
+						<li><a href="#">通州豪华3居260万 二环稀缺2居250w甩</a></li>
+						<li><a href="#">西3环通透2居290万 130万2居限量抢购</a></li>
+						<li><a href="#">黄城根小学学区仅260万 121平70万抛!</a></li>
+						<li><a href="#">独家别墅280万 苏州桥2居优惠价248万</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+	</body>
+
+</html>

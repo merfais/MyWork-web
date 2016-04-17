@@ -1,0 +1,111 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+
+body {
+	font-size: 12px;
+	line-height: 1.7;
+}
+
+li {
+	list-style: none;
+}
+
+#content {
+	margin: 0px auto;
+	width: 600px;
+	padding: 20px;
+}
+
+#content h1 {
+	color: #0066BB;
+}
+
+.item {
+	border: 1px solid #4C6F28;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.item h2 {
+	font-size: 16px;
+	font-weight: bold;
+	border-bottom: 3px solid #008000;
+	margin-bottom: 10px;
+}
+
+.item li {
+	margin: 5px 26px;
+	display: inline-block;
+}
+
+.item li img {
+	width: 130px;
+	border: 0px;
+}
+
+#menu {
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	/* 使用这个方式让其居中 */
+	margin-left: 301px;
+	/* 使用这个方式让其偏移一定的位置，固定 */
+	width: 80px;
+}
+
+#menu li a {
+	height: 30px;
+	width: 80px;
+	line-height: 30px;
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	padding: 10px;
+	margin: 5px 0px;
+	font-size: 20px;
+	background: #666666;
+}
+
+#menu li .ahover {
+	color: #7C2233;
+	background: #0B2C89;
+}
+
+#menu li a.current {
+	background: #807A62;
+	color: #7CA84E;
+}
+
+
+/**
+ *IE6 兼容性 hack 
+ */
+
+* html,
+* html body {
+	background-image: url(about:blank);
+	background-attachment: fixed;
+}
+
+* html #menu {
+	position: absolute;
+	top: expression(e=(document.documentElement ? document.documentElement.scrollTop: document.body.scrollTop) + 100 + 'px');
+}
+
+
+/*ie6 hack*/
+
+* html,
+* html body {
+	background-image: url(about:blank);
+	background-attachment: fixed;
+}
+
+* html #menu {
+	/*position: fixed;*/
+	position: absolute;
+	top: expression(((e=document.documentElement.scrollTop)?e: document.body.scrollTop)+100+'px');
+}

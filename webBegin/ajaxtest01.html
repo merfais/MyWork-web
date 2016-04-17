@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input {
+				font: "微软雅黑";
+				margin: 10px 0px;
+				line-height: 20px;
+			}
+			
+			label {
+				font: "微软雅黑";
+				font-size: 1.1em;
+				line-height: 30px;
+				margin: 10px 0px;
+			}
+			
+			select {
+				font: "微软雅黑";
+				font-size: 1.1em;
+				line-height: 30px;
+				margin: 10px 0px;
+			}
+			
+			button {
+				font-size: large;
+				width: 100px;
+				height: 30px;
+			}
+			
+			p {
+				font: "微软雅黑";
+				line-height: 30px;
+				font-weight: bold;
+				font-size: large;
+				color: #E4393C;
+			}
+		</style>
+		<script src="js/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$("#search").click(function() {
+					//发送Ajax查询请求并处理
+					var request = new XMLHttpRequest();
+					request.open("GET", "./php/server.php?number=" + $("#staffKey").val());
+					request.send();
+					//根据onreadystatechange事件触发请求的回应
+					request.onreadystatechange = function() {
+						//如果readyState=4请求已应答，响应已结束，status=200 处理OK
+						if (request.readyState == 4) {
+							if (request.status == 200) {
+								//更新页面中的searchResult标签内容
+								$("#searchResult").text(request.responseText);
+							} else {
+								alert("发生错误" + request.status);
+							}
+						}
+					}
+				});
+				$("#save").click(function() {
+					//发送Ajax查询请求并处理
+					var request = new XMLHttpRequest();
+					request.open("POST", "./php/server.php");
+					var params = "name=" + $("#staffName").val() +
+						"&number=" + $("#staffNumber").val() +
+						"&sex=" + $("#staffSex").val() +
+						"&job=" + $("#staffJob").val();
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					request.send(params);
+					//根据onreadystatechange事件触发请求的回应
+					request.onreadystatechange = function() {
+						//如果readyState=4请求已应答，响应已结束
+						if (request.readyState == 4) {
+							//，status=200 处理OK
+							if (request.status == 200) {
+								//更新页面中的searchResult标签内容
+								$("#creatResult").text(request.responseText);
+							} else {
+								alert("发生错误" + request.status);
+							}
+						}
+					}
+				});
+				$("#searchJson").click(function() {
+					//发送Ajax查询请求并处理
+					var request = new XMLHttpRequest();
+					request.open("GET", "./php/serverjson.php?number=" + $("#staffKey").val());
+					request.send();
+					//根据onreadystatechange事件触发请求的回应
+					request.onreadystatechange = function() {
+						//如果readyState=4请求已应答，响应已结束，status=200 处理OK
+						if (request.readyState == 4) {
+							if (request.status == 200) {
+								//更新页面中的searchResult标签内容
+								//將responseText字符串解析成Json對象，
+								var data = JSON.parse(request.responseText);
+								if (data.success) {
+									$("#searchResult").text(data.msg);
+								} else {
+									$("#searchResult").text("出错：" + data.msg);
+								}
+							} else {
+								alert("发生错误" + request.status);
+							}
+						}
+					}
+				});
+				$("#saveJson").click(function() {
+					//发送Ajax查询请求并处理
+					var request = new XMLHttpRequest();
+					request.open("POST", "./php/serverjson.php");
+					var params = "name=" + $("#staffName").val() +
+						"&number=" + $("#staffNumber").val() +
+						"&sex=" + $("#staffSex").val() +
+						"&job=" + $("#staffJob").val();
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					request.send(params);
+					//根据onreadystatechange事件触发请求的回应
+					request.onreadystatechange = function() {
+						//如果readyState=4请求已应答，响应已结束
+						if (request.readyState == 4) {
+							//，status=200 处理OK
+							if (request.status == 200) {
+								//更新页面中的searchResult标签内容
+								var data = JSON.parse(request.responseText);
+								if (data.success) {
+									$("#creatResult").text(data.msg);
+								} else {
+									$("#creatResult").text("出错：" + data.msg);
+								}
+							} else {
+								alert("发生错误" + request.status);
+							}
+						}
+					}
+				});
+				$("#searchAjax").click(function() {
+					//調用
+					$.ajax({
+						type: "get",
+						url: "./php/serverjson.php?number=" + $("#staffKey").val(),
+						async: true,
+						dataType: "json", //设置数据格式为JSON，那么在返回的数据已经进行了JSON解析
+						//在success，的函数处理中，data已经是JSON对象
+						success: function(data) {
+							if (data.success) {
+								$("#searchResult").text(data.msg);
+							} else {
+								$("#searchResult").text("出错：" + data.msg);
+							}
+						},
+						error: function(jqXHR) {
+							alert("发生错误" + jqXHR.status);
+						}
+					});
+				});
+				$("#saveAjax").click(function() {
+					$.ajax({
+						type: "post",
+						url: "./php/serverjson.php",
+						async: true,
+						dataType: "json",
+						data: {
+							"name": $("#staffName").val(),
+							"number": $("#staffNumber").val(),
+							"sex": $("#staffSex").val(),
+							"job": $("#staffJob").val()
+						},
+						success: function(data) {
+							if (data.success) {
+								$("#creatResult").text(data.msg);
+							} else {
+								$("#creatResult").text("出错：" + data.msg);
+							}
+						},
+						error: function(jqXHR) {
+							alert("发生错误" + jqXHR.status);
+						}
+					});
+				});
+				
+				//jsonp解决跨域浏览的问题，
+				//单数jsonp只支持get的方式，post的方式不能解决
+				$("#searchAjax2").click(function() {
+					//
+					$.ajax({
+						type: "get",
+						url: "http://127.0.0.1:1234/webBegin/php/serverjsonp.php?number=" + $("#staffKey").val(),
+						async: true,
+						jsonp:"callback",	//jsonp的值为任意，需要在后天代码中使用这个参数值，来合成返回的数据，
+						dataType: "jsonp", //设置数据格式为JSONP，那么在返回的数据已经进行了JSON解析
+						//在success，的函数处理中，data已经是JSON对象
+						success: function(data) {
+							if (data.success) {
+								$("#searchResult").text(data.msg);
+							} else {
+								$("#searchResult").text("出错：" + data.msg);
+							}
+						},
+						error: function(jqXHR) {
+							alert("发生错误" + jqXHR.status);
+						}
+					});
+				});
+			})
+		</script>
+	</head>
+
+	<body>
+		<h1>员工查询</h1>
+		<label>请输入员工编号</label>
+		<input id="staffKey" type="text" />
+		<button id="search">查询</button>
+		<button id="searchJson">查询</button>
+		<button id="searchAjax">查询</button>
+		<button id="searchAjax2">查询</button>
+		<p id="searchResult"></p>
+		<h1>员工创建</h1>
+		<label>请输入员工编号</label>
+		<input id="staffNumber" type="text" /><br />
+		<label>请输入员工姓名</label>
+		<input id="staffName" type="text" /><br />
+		<label>请选择员工性别</label>
+		<select id="staffSex" }>
+			<option>男</option>
+			<option>女</option>
+		</select><br />
+		<label>请输入员工职位</label>
+		<input id="staffJob" type="text" /><br />
+		<button id="save">提交</button>
+		<button id="saveJson">提交</button>
+		<button id="saveAjax">提交</button>
+		<p id="creatResult"></p>
+	</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			
+		</script>
+	</head>
+	<body>
+	<form class="cmxform" method="get" action="#">
+			<table>
+				<tr>
+					<td><label for="name">名字</label></td>
+					<td><input minlength="2" type="text" ></td>
+				</tr>
+				<tr>
+					<td>
+						<label for="sex">性别</label>
+					</td>
+					<td>
+						<label for="male">男</label>
+						<input type="radio" name="sex" value="男" id="male"  />
+						<label for="female">女</label>
+						<input type="radio" name="sex" value="女" id="female" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="email">邮箱</label>
+					</td>
+					<td>
+						<input id="email" type="email" >
+					</td>
+				</tr>
+				<tr>
+					<td><label for="password">密码</label></td>
+					<td>
+						<input type="password" minlength="6" maxlength="18" >
+					</td>
+				</tr>
+				<tr>
+					<input type="submit" class="submit" value="提交" />
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

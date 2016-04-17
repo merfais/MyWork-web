@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var tt =setInterval(cl,100);
+			function cl(){
+				var time = new Date();
+				document.getElementById("clock").value=time;
+			}
+			function cancelInterval()
+			{
+				clearInterval(tt);
+			}
+			 var ll;
+   			function cc(n){
+       			document.getElementById("num").innerHTML= n;
+        		n--;
+        		if(n<0)
+        		{
+        			clearTimeout(ll);
+        			
+        		}
+        		
+        		ll=setTimeout(cc(n),10000);
+        		
+       		}
+		</script>
+	</head>
+
+	<body>
+		<input type="text" id="clock" size="50" />
+		<input type="button" id="cancel" onclick="cancelInterval()" value="quxiao" />
+		<input type="button" onclick="cc(100)" value="jishi" />
+		<p id="num">ddddd</p>
+	</body>
+
+</html>
