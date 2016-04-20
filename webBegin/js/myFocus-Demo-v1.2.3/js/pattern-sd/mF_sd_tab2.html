@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>myFocus tab2</title>
+<script src="../myfocus-1.1.0.min.js" type="text/javascript"></script>
+<script src="mF_sd_tab2.js" type="text/javascript"></script>
+<link href="mF_sd_tab2.css" rel="stylesheet" />
+<style type="text/css">
+body { background:#fff; padding:20px; }
+</style>
+<script type="text/javascript">
+//设置实例1
+function step1(){
+myFocus.set({
+	id:'tab',
+	pattern:'mF_sd_tab2',
+	trigger:'mouseover'
+});
+}
+//设置实例2
+function step2(){
+myFocus.set({
+	id:'in-tab',
+	pattern:'mF_sd_tab2',
+	trigger:'mouseover'
+});
+}
+if(+[1,]){step1();step2();}//ff/ch执行顺序
+else{step2();step1();}//IE执行顺序
+</script>
+</head>
+<body>
+<h2>论坛demo需刷新多一次才看到效果</h2>
+<div id="tab" class="mf_sd_tab2">
+  <dl>
+  	<dt>标题1</dt>
+    <dd>
+    	<span><img src="http://webpic.sgamer.com/News/Preview/2010-11-24F1FBB.jpg" /></span>
+        <ul>
+        	<li>标题要长要长要长要长要长要长</li>
+            <li>标题要长要长要长要长要长要长</li>
+            <li>标题要长要长要长要长要长要长</li>
+            <li>标题要长要长要长要长要长要长</li>
+            <li>标题要长要长要长要长要长要长要长要长要长要长要长要长标题要长要长要长要长要长要长要长要长要长要长要长要长要长要长要长要长</li>
+        </ul>
+    </dd>
+  </dl>
+  <dl>
+  	<dt>标题2</dt>
+    <dd>
+    	<span><img src="http://webpic.sgamer.com/News/Preview/2010-11-24F1FBB.jpg" /></span>
+        <ul>
+        	<li>标题要长要长要长要长要长要长</li>
+            <li>标题要长要长要长要长要长要长</li>
+            <li>标题要长要长要长要长要长要长</li>
+            <li>标题要长要长要长要长要长要长</li>
+        </ul>
+    </dd>
+  </dl>
+  <dl>
+  	<dt>标题3</dt>
+    <dd>
+    	<span><img src="http://webpic.sgamer.com/News/Preview/2010-11-24F1FBB.jpg" /></span>
+        <ul>
+        	<li>标题要长要长要长要长要长要长</li>
+            <li>标题要长要长要长要长要长要长</li>
+            <li>标题要长要长要长要长要长要长</li>
+            <li class="in-tab">
+            	<div id="in-tab" class="in-tab">
+                	<dl>
+                    	<dt>in-tab1</dt>
+                        <dd>in-tab1</dd>
+                    </dl>
+                    <dl>
+                    	<dt>in-tab2</dt>
+                        <dd>in-tab2</dd>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+    </dd>
+  </dl>
+</div>
+</body>
+</html>

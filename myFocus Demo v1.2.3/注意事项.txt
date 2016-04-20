@@ -1,0 +1,6 @@
+本demo的pattern路径path设为：'js/pattern/'，即是相对路径。当移动js文件夹到其它地方或引用其它网址文件时请修改path参数（可在myFocus库文件修改path参数或在设置myFocus.set时设置path参数）
+
+任何疑问或建议请发表到论坛：http://bbs.blueidea.com/thread-3006673-1-1.html
+或E-MAIL至本人：koen_lee@qq.com
+
+谢谢支持！！
