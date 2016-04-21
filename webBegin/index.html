@@ -40,8 +40,37 @@
 			}
 			
 			#wrap {
-				width: 770px;
+				width: 100%;
 				margin: 0 auto;
+			}
+			.bodybox{
+				margin: 0 auto;
+				width:80%;
+				position: relative;
+			}
+			.left{
+				width: 200px;
+				height: 100px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				background: #0066BB;
+				line-height: 100px;
+			}
+			.mid{
+				height: 100px;
+				margin: 0px 102px 0px 202px;
+				background: #009999;
+				line-height: 100px;
+			}
+			.right{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				background: #0D3349;
+				line-height: 100px;
 			}
 		</style>
 	</head>
@@ -51,11 +80,7 @@
 			<div id="header"></div>
 			<div id="mainbody">
 				<div class="content book" style="">
-					<!--
-            	作者：merfais.bwq@qq.com
-            	时间：2016-03-06
-            	描述：
-            -->
+
 					<img src="img/img1.jpg" />
 					<img src="img/img2.jpg" />
 					<img src="img/img3.jpg" />
@@ -65,9 +90,17 @@
 				<div style="padding:100px;background-color: red; border: solid 2px green; height:100px; width: 300px;">
 
 				</div>
+				<div class="bodybox">
+					<div class="left">100px固定宽度</div>
+					<div class="mid">自适应三列布局</div>
+					<div class="right">200px固定宽度</div>
+				</div>
+
 			</div>
 			<div id="footer"></div>
 		</div>
+		
+		
 	</body>
 
 </html>
