@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>myFocus Demo</title>
+<style type="text/css">
+* { margin:0; padding:0; list-style:none; }
+body { background:#fff; font:12px/22px Verdana, Geneva, sans-serif; }
+img { border:0; }
+.clear{clear:both;height:0;overflow:hidden;}
+a { color:#333; text-decoration:none; }
+a:hover { text-decoration:underline; }
+.top, .bottom { height:38px; line-height:38px; background:#000; color:#999; }
+.top a { color:#ccc; }
+.top .tw { float:left; }
+.top .join { float:left; padding-left:20px; }
+.top .by { float:right; }
+.main { width:800px; margin:0 auto; overflow:visible; }
+.main .logo { text-align:center; }
+.main .header { width:800px; }
+.main .header img { float:left; }
+.main .header .tip { float:left; width:500px; padding:20px 0; font-size:14px; }
+.main .header .tip strong { color:red; }
+.main .header .nav{clear:both;height:30px;line-height:30px;font-size:14px;padding-left:20px;}
+.main .header .nav li{float:left;padding:0 16px;}
+.main .header .nav li.cur{background:#888;}
+.main .header .nav li a{color:#888;}
+.main .header .nav li a:hover{color:#333; text-decoration:none;}
+.main .header .nav li.cur a,.main .header .nav li.cur a:hover{color:#fff;}
+.main .focus { width:800px;border:2px solid #888; border-left:0; border-right:0; padding:4px 0 26px; overflow:visible;}
+.main .focus p { color:#999; }
+.main .set { margin-top:10px; position:relative;}
+.main .set .right{color:#999;position:absolute;right:0;top:-6px;z-index:9;}
+.main .set div p{ margin-bottom:10px;height:26px;line-height:26px;float:left;margin-right:10px; white-space:nowrap;display:none;}
+.main .set .base p,.main .set #adv p{display:inline;}
+.main .set .style { float:none;font-size:14px; line-height:28px; padding:6px 0 16px; border-bottom:1px solid #ccc; position:relative; background:#FFF; }
+.main .set .style input { width:70px; margin-right:10px; }
+.main .set .style span{position:absolute;top:4px;right:180px;font-size:12px;color:red;}
+.main .set .style button { height:30px; width:120px; line-height:24px; position:absolute; left:390px; top:2px; font-weight:bold; }
+.main .set .h4,.main .set #adv .h4{ float:none; color:#666; margin:0 0 10px 0;}
+.main .set .h4 span{color:red;}
+.main .set span.tip { display:block; font-size:12px; line-height:20px; color:#666; padding:10px; background:#f1f1f1; margin:10px 0; }
+.main .set input { width:60px; }
+.main .set input.def { width:80px; }
+.main .set .oth{clear:both;}
+.main .set .oth *{color:blue;}
+.main .set #adv { display:none; }
+.main .set #adv-btn { line-height:18px; height:24px; padding:0 10px; }
+.bottom { margin-top:30px; }
+
+</style>
+<script type="text/javascript" src="js/myfocus-1.2.3.full.js"></script><!--引入myFocus库-->
+</head>
+<body>
+<div class="top">
+  <div class="main">
+    <ul>
+      <li class="tw"><a target="_blank" href="http://hi.baidu.com/koen_li">Visit My Blog</a></li>
+      <li class="join"><a target="_blank" href="http://bbs.blueidea.com/thread-3006673-1-1.html">Join the Forum Discussion for update informations</a></li>
+      <li class="by">Created by koen_lee</li>
+    </ul>
+  </div>
+</div>
+<div class="main">
+  <div class="header"> <img src="img/logo.gif" />
+    <div class="tip">
+      <p><strong>提示：</strong>这里是模拟网站的后台操作，看一下给网站换焦点图，是不是像给播放器/浏览器换皮肤一样那么简单？<br /><strong>切换风格/刷新时如果看不到效果请多次点击&quot;应用&quot;。</strong></p>
+    </div>
+    <ul class="nav">
+    	<li><a href="about.html">关于myFocus</a></li>
+        <li class="cur"><a href="demo.html">DEMO</a></li>
+        <li><a href="usage.html">使用说明</a></li>
+        <li><a href="demo-sd.html">SD风格</a></li>
+        <li><a href="download.html">源码下载</a></li>
+        <li><a href="modify.html">如何修改</a></li>
+        <li><a href="api.html">API文档</a></li>
+        <li><a href="faq.html">FAQ常见问题</a></li>
+    </ul>
+  </div>
+  <div class="focus">
+    <p style="text-align:right">焦点图预览</p>
+    <div id="myFocus-wrap">
+    <div id="myFocus" style="visibility:hidden"><!--焦点图盒子-->
+      <div class="loading"><span>请稍候...</span></div><!--载入画面-->
+      <ul class="pic"><!--内容列表-->
+        <li><a href="#"><img src="img/1.jpg" thumb="" alt="图片1来源于网络，版权属于作者" text="图片1更详细的描述文字" /></a></li>
+        <li><a href="#"><img src="img/2.jpg" thumb="" alt="版权属于作者，图片2来源于网络" text="图片2更详细的描述文字" /></a></li>
+        <li><a href="#"><img src="img/3.jpg" thumb="" alt="图片3来源于网络，版权属于作者" text="图片3更详细的描述文字" /></a></li>
+        <li><a href="#"><img src="img/4.jpg" thumb="" alt="版权属于作者，图片4来源于网络" text="图片4更详细的描述文字" /></a></li>
+        <li><a href="#"><img src="img/5.jpg" thumb="" alt="图片5来源于网络，版权属于作者" text="图片5更详细的描述文字" /></a></li>
+      </ul>
+    </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="set">
+    <p class="right">参数设置</p>
+    <p class="style">绑定ID：
+      <input id="id" disabled="disabled" value="myFocus" />
+      风格应用选择：
+      <select id="pattern" onchange="">
+        <option value="mF_fscreen_tb">mF_fscreen_tb</option>
+        <option style="color:#f00" value="mF_YSlider">mF_YSlider</option>
+        <option value="mF_luluJQ">mF_luluJQ</option>
+        <option value="mF_51xflash">mF_51xflash</option>
+        <option value="mF_expo2010">mF_expo2010</option>
+        <option value="mF_games_tb">mF_games_tb</option>
+        <option style="color:#f00" value="mF_ladyQ">mF_ladyQ</option>
+        <option value="mF_liquid">mF_liquid</option>
+        <option value="mF_liuzg">mF_liuzg</option>
+        <option value="mF_pithy_tb">mF_pithy_tb</option>
+        <option value="mF_qiyi">mF_qiyi</option>
+        <option value="mF_quwan">mF_quwan</option>
+        <option value="mF_rapoo">mF_rapoo</option>
+        <option value="mF_sohusports">mF_sohusports</option>
+        <option value="mF_taobao2010">mF_taobao2010</option>
+        <option value="mF_taobaomall">mF_taobaomall</option>
+        <option value="mF_tbhuabao">mF_tbhuabao</option>
+        <option value="mF_pconline">mF_pconline</option>
+        <option value="mF_peijianmall">mF_peijianmall</option>
+        <option value="mF_classicHC">mF_classicHC</option>
+        <option value="mF_classicHB">mF_classicHB</option>
+        <option value="mF_slide3D">mF_slide3D</option>
+        <option style="color:#f00" value="mF_kiki">mF_kiki</option>   
+      </select>
+      <button onclick="apply()">应用</button>
+      <span>* 红色为最近更新</span>
+    </p>
+    <p class="h4"><span>基本参数设置：</span>(提示：修改参数后点击上面的“应用”以使其生效；另外，不同的风格样式下面可能会有不同的参数设置)</p>
+    <div class="base" id="base">
+    <p id="p-time">切换时间间隔:
+      <select id="time">
+        <option value="2">2秒</option>
+        <option value="3" selected="selected">3秒</option>
+        <option value="4">4秒</option>
+        <option value="6">6秒</option>
+      </select>
+     </p>
+     <p id="p-trigger">按钮触发切换模式:
+      <select id="trigger">
+        <option value="click">点击(click)</option>
+        <option value="mouseover">悬停(mouseover)</option>
+      </select>
+    </p>
+    <div class="clear"></div>
+    <p id="p-width">设置宽度(主图区):
+      <input id="width" value="450" />
+      (px)
+     </p>
+     <p id="p-height">设置高度(主图区):
+      <input id="height" value="296" />
+      (px)
+     </p>
+     <p id="p-txtHeight">文字层高度(设置0为隐藏):
+      <input id="txtHeight" class="def" value="default(默认)" />
+      (px)
+     </p>
+    </div>
+    <div class="oth" id="oth"><!--额外参数！-->
+    <p id="custom" style="*padding-top:2px">个性参数设置：</>
+    <p id="p-duration">运动速度: <select id="duration">
+        <option value="600">中等</option>
+        <option value="400">较快</option>
+        <option value="1000">较慢</option>
+      </select>
+    </p>
+    <p id="p-direction">运动方向: <select id="direction">
+        <option value="top">向上</option>
+        <option value="left">向左</option>
+        <option value="right">向右</option>
+        <option value="bottom">向下</option>
+      </select>
+    </p>
+    <p id="p-easing">运动形式: <select id="easing">
+        <option value="easeOut">快出慢入</option>
+        <option value="easeIn">慢出快入</option>
+        <option value="easeInOut">慢出慢入</option>
+        <option value="swing">摆钟缓动</option>
+        <option value="linear">匀速运动</option>
+      </select>
+    </p>
+    <p id="p-less">是否无缝: <select id="less">
+        <option value="1">是</option>
+        <option value="0">否</option>
+      </select>
+    </p>
+    <p id="p-chip">图切片数量(能被图高整除才有效): <select id="chip">
+        <option value="8">8片</option>
+        <option value="10">10片</option>
+        <option value="16">16片</option>
+      </select>
+    </p>
+    <p id="p-type">切片效果: <select id="type">
+        <option value="4">随机效果</option>
+        <option value="1">甩头</option>
+        <option value="2">甩尾</option>
+        <option value="3">凌乱</option>
+      </select>
+    </p>
+    <p id="p-pad">图片留边宽度: <select id="pad">
+        <option value="62">中等</option>
+        <option value="82">较宽</option>
+        <option value="32">较窄</option>
+      </select>
+    </p>
+    <p id="p-txtWidth">文字段宽度: <select id="txtWidth">
+        <option value="68">默认</option>
+        <option value="38">较短</option>
+        <option value="108">较长</option>
+      </select>
+    </p>
+    <p id="p-gray">非当前图片是否变灰: <select id="gray">
+        <option value="0">否</option>
+        <option value="1">是</option>
+      </select>
+    </p>
+    <p id="p-direct">切出方向: <select id="direct">
+        <option value="random">随机</option>
+        <option value="one">单向(向右)</option>
+      </select>
+    </p>
+    <p id="p-turn">翻牌方向: <select id="turn">
+        <option value="random">随机(单向)</option>
+        <option value="left">向左</option>
+        <option value="right">向右</option>
+        <option value="up">向上</option>
+        <option value="down">向下</option>
+      </select>
+    </p>
+    </div>
+    <div class="clear"></div>
+    <div id="adv">
+      <div class="h4"><span>高级参数设置：</span>(提示：下面的参数一般很少用到，通常情况下你可以无视它们^^)</div>
+      <p>自动播放:
+        <select id="auto">
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+        , 显示自带边框(如果有的话):
+        <select id="wrap">
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+        , 开始显示的图片顺序:
+        <input id="index" class="index" value="0" />
+        (0表示第一张，不能大于总数) </p>
+      <p> 按钮悬停(mouseover)模式下的延迟:
+        <select id="delay">
+          <option value="100">100毫秒(默认)</option>
+          <option value="200">200毫秒</option>
+          <option value="0">0(不延迟)</option>
+        </select>
+        , 是否缩小居中图片以适应焦点图大小：
+        <select id="autoZoom">
+          <option value="1">是</option>
+          <option value="0" selected="selected">否</option>
+        </select>
+      </p>
+    </div>
+    <div class="clear"></div>
+    <span class="tip">
+    提示1：本Demo用5张图片是为了更好的展示带略缩图风格的滚动，实际中使用你可以添加任意多的图片；<br />
+    提示2：本Demo全部为myFocus标准风格应用，查看自定义风格DEMO请点击顶部导航"SD风格"。<br />
+    提示3：“风格应用”是独立的小文件(相当于播放器的皮肤文件)，myFocus库自动按需加载这些文件。<br />
+    提示4：本demo不定期更新风格应用,你可以从网上下载更多的myFocus风格应用。</span>
+    <button id="adv-btn" onclick="toggleDisplay(this)">高级参数设置&gt;&gt;</button>
+  </div>
+</div>
+<script type="text/javascript">
+var mf=myFocus;//简称
+var html=mf.$('myFocus-wrap').innerHTML;//保存原html
+function getParam(){//获取全部参数
+	return {
+		id:mf.$('id').value,
+		pattern:mf.$('pattern').value,
+		time:mf.$('time').value,
+		trigger:mf.$('trigger').value,
+		width:mf.$('width').value/1,
+		height:mf.$('height').value/1,
+		txtHeight:mf.$('txtHeight').value/1,
+		auto:mf.$('auto').value=='1'?true:false,
+		autoZoom:mf.$('autoZoom').value=='1'?true:false,
+		wrap:mf.$('wrap').value=='1'?true:false,
+		index:mf.$('index').value/1,
+		delay:mf.$('delay').value/1,
+		//额外参数
+		duration:mf.$('duration').value/1,
+		direction:mf.$('direction').value,
+		easing:mf.$('easing').value,
+		less:mf.$('less').value/1,
+		chip:mf.$('chip').value/1,
+		type:mf.$('type').value/1,
+		pad:mf.$('pad').value/1,
+		txtWidth:mf.$('txtWidth').value/1,
+		gray:mf.$('gray').value/1,
+		direct:mf.$('direct').value,
+		turn:mf.$('turn').value
+	};
+}
+function reHTML(){//还原
+	mf.$('myFocus-wrap').innerHTML=html;
+	var css=mf.$$('style')[0];
+	css.parentNode.removeChild(css);
+};
+function toggleDisplay(o){//高级设置切换
+	if(o.innerHTML=='高级参数设置&gt;&gt;'){mf.$('adv').style.display='block';o.innerHTML='隐藏高级参数设置&gt;&gt;'}
+	else{mf.$('adv').style.display='none';o.innerHTML='高级参数设置&gt;&gt;';}
+}
+function displayParam(){//额外参数显示
+	var s=mf.$('pattern');
+	var st=mf.pattern[s.value]['cfg'];
+	var ps=mf.$$('p','oth'),len=ps.length;
+	for(var i=0;i<len;i++) ps[i].style.display='';
+	if(st) for(var p in st) mf.$('p-'+p).style.display=mf.$('custom').style.display='inline';
+}
+function apply(){//应用
+	reHTML();//还原
+	var p=getParam();//获取参数
+	p.waiting=false;//不等待图片加载
+	myFocus.set(p,true,function(){
+		displayParam();//显示额外参数
+	});
+}
+//开始设置
+myFocus.set(getParam(),true,function(){
+	displayParam();//显示额外参数
+});
+//屏蔽IE执行误差
+window.onerror=function(){return true};
+</script>
+<div class="bottom">
+  <div class="main">&copy; 2010/11/28 | Blog:http://hi.baidu.com/koen_li | E-mail:koen_lee(at)qq.com</div>
+</div>
+</body>
+</html>
