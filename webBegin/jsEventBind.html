@@ -55,6 +55,19 @@
 				font-family: "微软雅黑";
 				cursor: default;
 			}
+			#login{
+				width: 200px;
+				height: 50px;
+				line-height: 20px;
+				font-size: 16px;
+				font-weight: bold;
+			}
+			p{
+				font-size: 19px;
+				line-height: 30px;
+			}
+			
+			
 		</style>
 		<script type="text/javascript">
 			window.onload = function() {
@@ -156,19 +169,19 @@
 	</head>
 
 	<body>
-		<div class="head">亲，您好！
+		<div class="head">
+			<p>
+				亲，您好！<br />
+				登录框屏幕内拖动测试，<br />
+				练习：事件绑定，获取登录框DOM绑定mousemove，mousedown事件<br />
+				function(event) //event的处理等
+			</p>
 			<input type="button" value="登 录" id="login">
 		</div>
 		<div id="login_box" class="hide">
 			<div id="login_title">用户登录</div><span id="close">X</span>
 		</div>
-		<form>
-			<input type="email" minlength="2" maxlength="10" />
-			<input type="submit"	value="submint" />
-			
-			
-		</form>
-		
+
 	</body>
 
 </html>
