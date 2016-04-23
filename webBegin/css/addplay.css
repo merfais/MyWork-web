@@ -1,0 +1,85 @@
+#addwrap {
+	clear: both;
+	width: 1000px;
+	height: 310px;
+	position: relative;
+	overflow: hidden;
+}
+
+#addwrap ul {
+	list-style: none;
+}
+
+#addwrap .pics {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#addwrap .pics li {
+	display: none;
+}
+
+#addwrap .pics li.pic-active{
+	display: list-item;
+}
+
+#addwrap .list {
+	z-index: 10;
+	position: absolute;
+	bottom: 10px;
+	right: 100px;
+}
+
+#addwrap .list li {
+	float: left;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	text-align: center;
+	background: #cbcbcb;
+	margin: 10px;
+	border: 1px solid #BBBBBB;
+	border-radius: 50%;
+	transition: transform 0.15;
+}
+
+#addwrap .list li.list-active, #addwrap .list li:hover{	
+	transform: scale(1.2);
+	background: #FFF;
+}
+
+#addwrap a.banner-anchor {
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	margin-top: -50px;
+	width: 80px;
+	height: 100px;
+	background: url(../img/mooc/banner_sprite.png) no-repeat;
+	opacity: 0;
+	
+}
+
+#addwrap:hover a.banner-anchor{
+	opacity: 1;
+	transform: translateX(0);
+	transition: transform 0.6s, opacity 0.6s;
+}
+
+#addwrap a.prev {
+	background-position: 0px -41px;
+	transform:translateX(-100%);
+	left: 0px;
+}
+
+#addwrap a.next {
+	background-position: 0px -142px;
+	transform: translateX(100%);
+	right: 0px;
+}
+
+#addwrap a.next:hover ,
+#addwrap a.prev:hover{
+	background-position-x: -81px;
+}
