@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="UserInfoModule">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css" />
+		<script src="js/angularStudy.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.div{
+				border: 1px solid #DDDDDD;
+				padding: 10px;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<div class="panel-title">双向数据绑定</div>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<form role="form" class="form-horizontal" ng-controller="UserInfoCtrl">
+							<div class="form-group">
+								<label class="col-md-2 control-label">邮箱</label>
+								<div class="col-md-10">
+									<input type="email" class="form-control" placeholder="推荐使用。。。。。" ng-model="userInfo.email" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 control-label">密码</label>
+								<div class="col-md-10"><input type="password" class="form-control" placeholder="只能输入数字，字符" ng-model="userInfo.password" /></div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-offset-2 col-md-10">
+									<div class="checkbox"><label>
+										<input type="checkbox" value="" ng-model="userInfo.autoLogin"/>自动登录
+									</label></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-offset-2 col-md-10">
+									<button class="btn btn-default" ng-click="getFormData()">
+										获取表单的值
+									</button>
+									<button class="btn btn-default" ng-click="setFormData()">
+										设置表单的值
+									</button>
+									<button class="btn btn-default" ng-click="resetFormData()">
+										重置表单的值
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-primary">
+			<div class="panel-heading panel-title"> 指令的演示和测试</div>
+			<div class="panel-body">
+				<hello></hello>
+				<div hello></div>
+				<div class="hello"></div>
+				<!-- 			
+				directive:hello
+				-->
+				<div id=""></div>
+				<div class="panel-title panel-heading">templateUrl的测试：templateURL：模板页面只能有html元素构成的代码片段，也就是只能是body标签内的标签</div>
+				<tturl></tturl>
+				<ttt></ttt>
+				<tran><div class="div">这是原来嵌套的内容</div></tran>
+				<div class="div">
+					指令中的link用法，link函数有四个参数，scope，element，attribute，depedencyCtrl(依赖控制器)
+					<div ng-controller="LinkCtrl1">
+						<div class="div">
+							<linktest fooAttr="loadData1()">鼠标进入即加载数据，控制台打印。</linktest>
+						</div>
+					</div>
+					<div ng-controller="LinkCtrl2">
+						<div class="div">多个controller中使用同一个指令的情况，<br>
+							这里是第二个controller<br />
+							<linktest fooAttr="loadData2()">鼠标进入即加载数据，控制台打印。</linktest>
+						</div>
+					</div>
+				</div>
+				<div class="div">
+					指令中的controller，依赖控制器的使用。
+					<div class="row">
+						<div class="col-md-3">
+							<superman speed>第一个超人 speed</superman>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<superman speed power>第二个超人 speed power</superman>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<superman speed power light>第三个超人 speed power light</superman>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
