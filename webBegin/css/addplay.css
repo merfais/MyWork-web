@@ -58,13 +58,12 @@
 	height: 100px;
 	background: url(../img/mooc/banner_sprite.png) no-repeat;
 	opacity: 0;
-	
+	transition: transform 0.6s, opacity 0.6s;
 }
 
 #addwrap:hover a.banner-anchor{
 	opacity: 1;
 	transform: translateX(0);
-	transition: transform 0.6s, opacity 0.6s;
 }
 
 #addwrap a.prev {
