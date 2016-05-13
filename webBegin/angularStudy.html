@@ -106,6 +106,24 @@
 						</div>
 					</div>
 				</div>
+				<div class="div">
+					独立作用域
+					<duli></duli>
+					<duli></duli>
+					<div class="div" ng-controller="duliCtrl">
+						<duli dulivalue="{{flavor}}"></duli>
+						<div class="div">双向数据绑定<br />
+							<input type="text" ng-model="flavor1" />
+							<dulioto dulivalue1="flavor1"></dulioto>
+						</div>
+						<div class="div">
+							&数据绑定<br/>
+							<greeting greet="sayHello(name)"></greeting>
+							<greeting greet="sayHello(name)"></greeting>
+							<greeting greet="sayHello(name)"></greeting>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>
