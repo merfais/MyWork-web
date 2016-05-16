@@ -1,33 +1,31 @@
-*{
+* {
 	padding: 0;
-	margin:0;
+	margin: 0;
 	font-family: "微软雅黑" arial;
-	
 }
 
-body{
+body {
 	background: #ececec;
 }
 
-.bg{
+.bg {
 	background: #FFFFFF;
 	width: 1000px;
 	margin: 0 auto;
 }
 
-#headBox{
+#headBox {
 	position: relative;
 }
 
-#headBox ul.top{
+#headBox ul.top {
 	list-style: none;
 	background-image: url(../img/mooc/top_bg.jpg);
 	width: 100%;
 	height: 28px;
-
 }
 
-#headBox ul.top li{
+#headBox ul.top li {
 	height: 25px;
 	width: 100px;
 	line-height: 25px;
@@ -35,15 +33,15 @@ body{
 	list-style-image: url(../img/mooc/li_bg.gif);
 }
 
-#headBox ul.top li a{
+#headBox ul.top li a {
 	text-decoration: none;
 }
 
-#headBox ul.top li a:hover{
+#headBox ul.top li a:hover {
 	color: #E4393C;
 }
 
-#headBox .tel{
+#headBox .tel {
 	background: url(../img/mooc/tel.jpg) no-repeat 0px 20px;
 	height: 70px;
 	line-height: 70px;
@@ -51,18 +49,18 @@ body{
 	float: right;
 }
 
-#headBox strong{
+#headBox strong {
 	color: red;
 }
 
-#headBox .nav{
+#headBox .nav {
 	background: #7563A5;
 	height: 40px;
 	border: 2px solid #7563A5;
 	border-radius: 3px;
 }
 
-#headBox .nav form{
+#headBox .nav form {
 	float: right;
 	margin-right: 100px;
 	margin-top: 5px;
@@ -70,7 +68,7 @@ body{
 	padding: 0px 5px;
 }
 
-#headBox .nav form .text{
+#headBox .nav form .text {
 	width: 200px;
 	height: 25px;
 	font-size: 17px;
@@ -78,7 +76,7 @@ body{
 	outline: none;
 }
 
-#headBox .nav form .submit{
+#headBox .nav form .submit {
 	background: url(../img/mooc/search.jpg) no-repeat 0px 5px;
 	width: 25px;
 	height: 25px;
@@ -86,12 +84,12 @@ body{
 	outline: none;
 }
 
-#headBox .nav ul{
+#headBox .nav ul {
 	list-style: none;
 	height: 40px;
 }
 
-#headBox .nav li a{
+#headBox .nav li a {
 	height: 40px;
 	line-height: 40px;
 	float: left;
@@ -102,18 +100,247 @@ body{
 	font-weight: bold;
 }
 
-#headBox .nav ul li a:hover,#headBox .nav ul li a.live{
+#headBox .nav ul li a:hover,
+#headBox .nav ul li a.live {
 	background: #663399;
 	color: #FFFFFF;
+	border-radius: 4px;
 }
 
-#bodyBox #boxID{
+#content {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+#content .leftContent,
+#content .midContent,
+#content .rightContent {
+	border-radius: 2px;
+	box-shadow: 0px 0px 1px 1px #CCCCCC;
+	border: 1px solid #CCCCCC;
+	height: 300px;
+}
+
+#content .leftContent {
+	width: 300px;
+	position: absolute;
+	left: 1px;
+	top: 0px;
+}
+
+#content .midContent {
+	position: relative;
+	margin: 2px 308px;
+}
+
+#content .rightContent {
+	position: absolute;
+	top: 0px;
+	right: 1px;
+	width: 300px;
+}
+
+#content .title {
+	color: #807A62;
+	height: 35px;
+	line-height: 35px;
+	font-weight: bold;
+	font-size: 15px;
+	background: url(../img/mooc/titile_bg.gif) repeat-x;
+	padding: 0px 20px;
+}
+
+#content a.title-more {
+	color: #807A62;
+	height: 35px;
+	line-height: 35px;
+	font-size: 11px;
+	text-decoration: none;
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	padding-right: 10px;
+}
+
+#content a.title-more:hover {
+	color: #CC0033;
+	transform: scale(1.1);
+}
+
+.content .contentImg {
+	margin: 5px;
+	float: left;
+}
+
+.content h2 a {
+	font-size: 14px;
+	color: #CC3366;
+	font-weight: bold;
+	height: 22px;
+	line-height: 22px;
+	text-decoration: none;
+}
+
+.content h2 a:hover {
+	color: #AA0000;
+	font-style: italic;
+}
+
+.content .importantNews {
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.content .moreNews {
+	font-size: 10px;
+	color: #8D4514;
+}
+
+.content .moreNews:hover {
+	color: #FF0000;
+}
+
+#content .newsList {
+	clear: both;
+	list-style: none;
+	padding: 5px;
+}
+
+#content .newsList li {
+	font-size: 14px;
+	border-bottom: 1px dotted #cdcdcd;
+	line-height: 28px;
+	height: 28px;
+}
+
+#content .newsList li a {
+	text-decoration: none;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 220px;
+	display: inline-block;
+}
+
+#content .newsList li a:hover {
+	text-decoration: underline;
+	color: #7C2233;
+}
+
+#content .newsList span {
+	float: right;
+	color: #777777;
+	font-size: 10px;
+	line-height: 28px;
+	height: 28px;
+}
+
+.midContent .courseList {
+	list-style: none;
+	background: url(../img/mooc/product_type_bg.jpg);
+	height: 37px;
+	clear: both;
+	margin: 52px auto;
+}
+
+.midContent .courseList a {
+	float: left;
+	width: 76px;
+	text-align: center;
+	height: 37px;
+	line-height: 37px;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.midContent .courseList a:hover {
+	background: #ececec;
+	color: #000000;
+	font-weight: bold;
+	border: 1px solid #E1E4E2;
+	border-radius: 3px;
+}
+
+#footBox {
 	
 }
 
-#bodyBox #boxID .loading{
-	background: url(../img/mooc/loading.gif) no-repeat 50% 50%;
-	height: 100px;
+.copyright {
+	padding: 10px;
+	background: #FFFFFF;
+	margin: 20px auto 0px;
+	height: 200px;
+	width: 900px;
+	border-top: 1px solid #999999;
+}
+
+.copyright ul {}
+
+.copyright ul li {
+	list-style: none;
+	width: 180px;
+	line-height: 30px;
+	text-align: center;
+	background: url(../img/mooc/line.png) no-repeat right center;
+	float: left;
+}
+
+.copyright ul li a {
+	text-decoration: none;
+	color: #A2A09A;
+}
+
+.copyright ul li a:hover {
+	color: #807A62;
+}
+
+.copyright .subList a {
+	font-size: 11px;
+}
+
+.content .newsTypeBox,
+.content .newsContentBox {
+	border: #e8e8e8 1px solid;
+	border-radius: 3px;
+	box-shadow: 0px 0px 2px 1px #CCCCCC;
+	
+}
+
+.content .newsTypeBox {
+	width: 280px;
+	margin: 5px 6px 10px 2px;
+	float: left;
+}
+
+.newsTypeBox ul li {
+	list-style: none;
+}
+
+.newsTypeBox ul li a {
+	height: 37px;
+	line-height: 37px;
+	text-decoration: none;
+	color: #777777;
+	padding-left: 15px;
+	display: block;
+	border: 1px solid #FFFFFF;
+}
+.newsTypeBox ul li a:hover {
+	border: 1px solid #DDDDDD;
+	box-shadow: 0px 0px 1px 1px #CCCCCC;
+	background: #efefef;
 }
 
 
+.content .newsContentBox {
+	width: 700px;
+	margin: 5px 2px 10px 0px;
+	min-height: 300px;
+	float: right;
+}
+
+.newsContentBox ul li{
+	list-style: none;
+}

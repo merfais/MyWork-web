@@ -1,0 +1,368 @@
+body {
+	background: #FFFFFF;
+	font-family: "微软雅黑";
+}
+
+ul,
+ol,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dt,
+dd,
+li,p {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+a {
+	color: #535353;
+	text-decoration: none;
+}
+
+input {
+	border: none;
+	outline: none;
+}
+
+img {
+	background: none;
+	border: none;
+}
+
+.comm {
+	width: 1000px;
+	margin: 0px auto;
+}
+
+.topBar {
+	height: 31px;
+	background: #F7F7F7;
+	line-height: 31px;
+}
+
+.topBar a:hover {
+	color: #CC0033;
+	text-decoration: underline;
+}
+
+.leftArea {
+	float: left;
+}
+
+.collection {
+	font-weight: bold;
+}
+
+.rightArea {
+	float: right;
+}
+
+.logeBar {
+	height: 100px;
+	background: #1E7AD9;
+}
+
+.logo {
+	padding: 13px 0px 0px 41px;
+	float: left;
+}
+
+.searchBox {
+	width: 450px;
+	float: left;
+	margin-left: 100px;
+	margin-top: 30px;
+}
+
+.search_text {
+	width: 360px;
+	height: 35px;
+	line-height: 35px\9;
+	float: left;
+	padding: 0px 10px;
+	background: #FFFFFF;
+}
+
+.search_btn {
+	width: 70px;
+	height: 35px;
+	font-size: 14px;
+	background: #FF8C00;
+	font-family: "微软雅黑";
+	color: #FFFFFF;
+	float: right;
+	font-weight: bold;
+}
+
+.shopCar {
+	float: right;
+	width: 145px;
+	height: 35px;
+	background: #FF8C00;
+	margin-top: 30px;
+	line-height: 35px;
+	font-family: "微软雅黑";
+	color: #FFFFFF;
+	font-size: 14px;
+	margin-right: 30px;
+}
+
+.shopText {
+	border-right: solid 1px #e27A00;
+	padding: 0px 10px 0px 30px;
+}
+
+.shopNum {
+	width: 56px;
+	text-align: center;
+	padding-left: 15px;
+}
+
+.navBox {
+	background: #1369C0;
+	height: 35px;
+	color: #FFFFFF;
+	font: "微软雅黑";
+}
+
+.shopClass {
+	width: 190px;
+	float: left;
+	position: relative;
+}
+
+.shopClass h3 {
+	text-align: center;
+	line-height: 35px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.nav {
+	line-height: 35px;
+	float: left;
+}
+
+.nav li {
+	float: left;
+}
+
+.nav li:hover{
+	background: #52ADE3;
+}
+
+.nav li a {
+	display: block;
+	color: #FFFFFF;
+	font-family: "微软雅黑";
+	width: 135px;
+	text-align: center;
+}
+
+.nav .active {
+	background: #4593FD;
+}
+
+
+
+.shopClass-show {
+	position: absolute;
+	left: 0px;
+	top: 35px;
+	width: 100%;
+	background: #4593FD;
+}
+
+.shopClass-item {
+	padding: 8px 10px;
+	border-bottom: 1px solid #3487F2;
+	border-top: 1px solid #5AA1FE;
+	color: #FFFFFF;
+	font-size: 14px;
+	margin: 0px 0px 0px 4px;
+}
+
+.shopClass-item.i-active {
+	background: #FFFFFF;
+}
+
+.shopClass-item.i-active a {
+	color: #000000;
+}
+
+.shopClass-item .b {
+	font-weight: bold;
+}
+
+.shopClass-item a {
+	color: #FFFFFF;
+	display: inline-block;
+}
+
+.shopClass-item a.a-active {
+	background: #1369C0;
+	border: 1px solid ##1369C0;
+	border-radius: 10px;
+	text-decoration: underline;
+}
+
+.shopClass-item dt {
+	height: 32px;
+	margin-left: -8px;
+}
+
+.shopClass-item dt a {
+	padding: 4px 8px;
+}
+
+.banner-bar {
+	margin-left: 190px;
+	clear: both;
+	width: 810px;
+	height: 350px;
+	position: relative;
+	overflow: hidden;
+}
+
+.banner-bar ul {
+	list-style: none;
+}
+
+.banner-bar .pics {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.banner-bar .pics li {
+	display: none;
+}
+
+.banner-bar .pics li img{
+	width: 810px;
+	height: 350px;
+}
+
+.banner-bar .pics li.pic-active{
+	display: list-item;
+}
+
+.banner-bar .list {
+	z-index: 2;
+	position: absolute;
+	bottom: 2px;
+	width: 100%;
+	text-align: center;
+}
+
+.banner-bar .list li {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	text-align: center;
+	background: #cbcbcb;
+	margin: 10px;
+	border: 1px solid #BBBBBB;
+	border-radius: 50%;
+	transition: transform 0.15;
+}
+
+.banner-bar .list li.list-active, .banner-bar .list li:hover{	
+	transform: scale(1.2);
+	background: #FFF;
+}
+
+.banner-bar a.banner-anchor {
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	margin-top: -50px;
+	width: 80px;
+	height: 100px;
+	background: url(../img/mooc/banner_sprite.png) no-repeat;
+	opacity: 0;
+	transition: transform 0.6s, opacity 0.6s;
+}
+
+.banner-bar:hover a.banner-anchor{
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.banner-bar a.prev {
+	background-position: 0px -41px;
+	transform:translateX(-100%);
+	left: 0px;
+}
+
+.banner-bar a.next {
+	background-position: 0px -142px;
+	transform: translateX(100%);
+	right: 0px;
+}
+
+.banner-bar a.next:hover ,
+.banner-bar a.prev:hover{
+	background-position-x: -81px;
+}
+
+.shopTitle{
+	height: 44px;
+	padding-top: 15px;
+}
+.shopTitle h3{
+	font-size: 24px;
+	float: left;
+}
+
+.shopTitle .more{
+	font-family: "宋体";
+	float:right
+}
+
+.shopTitle .more:hover{
+	color: #E4393C;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.shopList .leftArea{
+	width: 190px;
+	height: 400px;
+	overflow: hidden;
+}
+
+.shopList .rightArea{
+	width: 800px;
+}
+
+.shop-item{
+	width: 160px;
+	height: 190px;
+	border: 1px solid #999999;
+	text-align: center;
+	padding: 10px;
+	float: left;
+}
+
+.shop-img a img{
+	height: 140px;
+	width: 130px;
+}
+
+.shop-item h3{
+	font-size: 16px;
+}
+
+.shop-item p{
+	color: #667700;
+	font-size: 14px;
+}
+
