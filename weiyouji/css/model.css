@@ -1,0 +1,265 @@
+@charset "utf-8";
+/*
+ * 定义页面模版样式
+ */
+/*给所有图片添加一个水印标志*/
+figure:after{
+	position: absolute;
+	content: attr(data-content);
+	background: url(../images/_local_bg.png) no-repeat;
+	background-size: auto 100%; 
+	padding-left: 12px;
+	background-color: rgba(0,0,0,0.4);
+	color: white;
+	bottom: 0px;
+	left:2px;
+}
+/*模版一，顶部图片，底部标题加文字说明*/
+
+.m-onePicAndText {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.m-onePicAndText * {
+	position: absolute;
+}
+/*横版图片样式*/
+
+.m-onePicAndText .img-x,.m-onePicAndText .img-y{
+	width: 78vw;
+	left: 10vw;
+	top: 20vh;
+	border: 1vw solid #FFFFFF;
+	box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 3px;
+}
+.img-x img,.img-y img {
+	position: relative;
+	width: 100%;
+}
+/*纵版图片样式*/
+.m-onePicAndText .img-y {
+	width: 66vw;
+	top: 12vh;
+	left: 16vw;
+}
+
+/*标题样式*/
+
+.m-onePicAndText .p-title {
+	top: 58vh;
+	left: 50%;
+	width: 12rem;
+	margin-left: -6rem;
+	font-size: 3rem;
+	font-weight: bold;
+	color: #888888;
+	font-family: "微软雅黑";
+}
+/*文字说明样式*/
+
+.m-onePicAndText .p-content {
+	top: 66vh;
+	font-size: 2rem;
+	text-align: center;
+	width: 36rem;
+	left: 50%;
+	margin-left: -18rem;
+	text-indent: 2rem;
+	color: #888888;
+	font-family: "微软雅黑";
+}
+/*纵版文字说明要向下移动一点*/
+
+.m-onePicAndText .p-content-y {
+	top: 75vh;
+}
+/*模版二，顶部三个图片，底部标题加文字说明*/
+
+.m-threePicAndText {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.m-threePicAndText * {
+	position: absolute;
+}
+.m-threePicAndText figure img {
+	position: relative;
+	width: 100%;
+}
+.m-threePicAndText .img-top {
+	width: 78vw;
+	left: 10vw;
+	top: 17vh;
+	border: 1vw solid #FFFFFF;
+	box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 3px;
+}
+.m-threePicAndText .img-left,
+.m-threePicAndText .img-right {
+	width: 37vw;
+	height: 37vw;
+	left: 10vw;
+	top: 49vh;
+	overflow: hidden;
+	border: 1vw solid #FFFFFF;
+	box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 3px;
+}
+.m-threePicAndText .img-right {
+	left: 51vw;
+}
+/*横版照片*/
+
+.m-threePicAndText img.pic-x {
+	height: 100%;
+	width: auto;
+}
+/*纵版照片*/
+
+.m-threePicAndText img.pic-y {
+	width: 100%;
+	height: auto;
+}
+.m-threePicAndText .p-title {
+	top: 74vh;
+	left: 50%;
+	width: 12rem;
+	margin-left: -6rem;
+	font-size: 3rem;
+	font-weight: bold;
+	color: #888888;
+	font-family: "微软雅黑";
+}
+/*文字说明样式*/
+
+.m-threePicAndText .p-content {
+	top: 80vh;
+	font-size: 2rem;
+	text-align: center;
+	width: 36rem;
+	left: 50%;
+	margin-left: -18rem;
+	text-indent: 2rem;
+	color: #888888;
+	font-family: "微软雅黑";
+}
+/*模版三，上下放置两张图片,也可以放置单张纵向照片*/
+
+.m-two-X-Pic {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.m-two-X-Pic * {
+	position: absolute;
+}
+.m-two-X-Pic figure img {
+	position: relative;
+	width: 100%;
+	max-height: 65vh;
+}
+.m-two-X-Pic .img-top,
+.m-two-X-Pic .img-bottom {
+	width: 78vw;
+	left: 10vw;
+	top: 17vh;
+	border: 1vw solid #FFFFFF;
+	box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 3px;
+}
+.m-two-X-Pic .img-bottom {
+	top: 52vh;
+}
+/*模版四，四张照片组合*/
+
+.m-fourPic {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.m-fourPic * {
+	position: absolute;
+}
+.m-fourPic figure img {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.m-fourPic .img-left-top,
+.m-fourPic .img-left-bottom {
+	width: 33vw;
+	height: 25vh;
+	left: 2vw;
+	top: 5vh;
+	border: 1vw solid #FFFFFF;
+	box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 3px;
+}
+.m-fourPic .img-left-bottom {
+	top: 32vh;
+}
+.m-fourPic .img-right {
+	width: 58vw;
+	height: 52vh;
+	left: 38vw;
+	top: 5vh;
+	border: 1vw solid #FFFFFF;
+	box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 3px;
+}
+.m-fourPic .img-bottom {
+	width: 94vw;
+	height: 32vh;
+	left: 2vw;
+	top: 59vh;
+	border: 1vw solid #FFFFFF;
+	box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 3px;
+}
+/*模版五，12张照片列表*/
+
+.m-picList {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.m-picList ul {
+	width: 79vw;
+	margin: 0 auto;
+	margin-top: 22vh;
+}
+.m-picList ul li {
+	width: 25vw;
+	height: 25vw;
+	display: inline-block;
+	overflow: hidden;
+	margin: 0px 1vw 1vw 0px;
+	box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 3px;
+}
+.m-picList ul li img {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+/*联系我们*/
+
+.m-linkUs {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background: url(../images/linkUs_bg.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.m-linkUs .img-QRcode{
+	position: absolute;
+    top: 20vh;
+    width: 40vw;
+    height: 40vw;
+    left: 50%;
+    margin-left: -20vw;
+}
+.m-linkUs .img-QRcode:after{
+	display: none;
+}
+
+.m-linkUs .img-QRcode img{
+	width: 100%;
+	height: 100%;
+}

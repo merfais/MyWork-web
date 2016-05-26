@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="apple-touch-fullscreen" content="YES" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="Expires" content="-1">
+		<meta http-equiv="pragram" content="no-cache">
+		<title>爱驴网游记展示</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="css/model.css" />
+		<link rel="stylesheet" type="text/css" href="css/modelAnmate.css" />
+		<script src="js/init.mix.js" type="text/javascript" charset="utf-8"></script>
+		<!--移动端版本兼容-->
+		<script type="text/javascript">
+			var phoneWidth = parseInt(window.screen.width);
+			var phoneScale = phoneWidth / 640;
+			var ua = navigator.userAgent;
+			if (/Android (\d+\.\d+)/.test(ua)) {
+				var version = parseFloat(RegExp.$1);
+				// andriod 2.3
+				if (version > 2.3) {
+					document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+					// andriod 2.3以上
+				} else {
+					document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+				}
+				// 其他系统
+			} else {
+				document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+			}
+		</script>
+		<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+		<!--移动端版本兼容 end -->
+	</head>
+
+	<body class="s-bg-ddd">
+		<!-- 声音控件 -->
+		<section class="u-audio" data-src="images/wuwangxinan.mp3">
+			<p id="coffee_flow" class="btn_audio">
+				<strong class="txt_audio z-hide">关闭</strong>
+				<span class="css_sprite01 audio_open"></span>
+				<div id="song_img" class="" style="display: none;">点击logo打开背景音乐</div>
+				<div class="coffee-steam-box"></div>
+			</p>
+		</section>
+		<!-- 声音控件 end-->
+		<!-- 箭头指示引导 -->
+		<section class="u-arrow">
+			<p class="css_sprite01"></p>
+		</section>
+		<!-- 箭头指示引导 end-->
+		<!-- page页面内容 -->
+		<section class="p-ct transformNode-2d">
+			<div class="translate-back">
+				<div class="m-page m-fengye">
+					<div class="page-con lazy-finish" style="background-image: url(images/001.jpg);">
+						<div class="p-compayInfo">
+							<p>爱驴网制作</p>
+						</div>
+						<div class="p-fengye-title">
+							<p>我是封面标题</p>
+						</div>
+						<div class="p-fengye-author">
+							<p>我是萌萌哒的作者</p>
+						</div>
+					</div>
+				</div>
+				<div class="m-page f-hide">
+					<div class="page-con j-txtWrap lazy-finish" style="background-color: #F9E7BF;">
+						<div class="p-zoomIn-txt">
+							<p class="p-zoomIn-txt-row1">
+								我是第一行文字，我最长！
+							</p>
+							<p class="p-zoomIn-txt-row2">
+								我是第二行，哈哈哈！
+							</p>
+							<p class="p-zoomIn-txt-row3">
+								我是第三行，哎！
+							</p>
+						</div>
+						<div class="p-zoomIn-pic" style="background-image: url(images/002.jpg);">
+						</div>
+					</div>
+				</div>
+				<section class="m-page f-hide">
+					<div class="page-con j-txtWrap lazy-finish" style="background-color: #F6F7FB;">
+						<div class="m-onePicAndText">
+							<figure class="img-x a-fadeInDown" data-content="我是标注 2013-11-11">
+								<img src="images/show01.jpg"/>
+							</figure>
+							<h1 class="p-title a-fadeIn a-delay-1s">初识丽江</h1>
+							<p class="p-content a-fadeIn a-delay-1s">每个人都有一段时间，想找一个地方，什么也不干，什么也不想，只想静静的坐在一个地方发发呆</p>
+						</div>
+					</div>
+				</section>
+				<section class="m-page f-hide">
+					<div class="page-con j-txtWrap lazy-finish" style="background-color: #F6F7FB;">
+						<div class="m-onePicAndText">
+							<figure class="img-x a-fadeInDown" data-content="我在丽江 2013-11-11">
+								<img src="images/show02.jpg"/>
+							</figure>
+							<h1 class="p-title a-fadeInDown a-delay-1s">丽江小调</h1>
+							<p class="p-content a-fadeInUp a-delay-1s5">一个民族，一种文化，一段故事...</p>
+						</div>
+					</div>
+				</section>
+				<section class="m-page f-hide">
+					<div class="page-con j-txtWrap lazy-finish" style="background-color: #F6F7FB;">
+						<div class="m-threePicAndText">
+							<figure class="img-top a-fadeInDown a-delay-0s5">
+								<img src="images/show03.jpg" />
+							</figure>
+							<figure class="img-left a-fadeInLeft a-delay-0s5">
+								<img class="pic-y" style="top: -100px;" src="images/show04.jpg" />
+							</figure>
+							<figure class="img-right a-fadeInRight a-delay-0s5">
+								<img class="pic-x" style="left: -88px;" src="images/show05.jpg" />
+							</figure>
+							<h1 class="p-title a-fadeInDown">丽江小调</h1>
+							<p class="p-content a-fadeInUp a-delay-0s5">一个民族，一种文化，一种美食...</p>
+						</div>
+					</div>
+				</section>
+				<section class="m-page f-hide">
+					<div class="page-con j-txtWrap lazy-finish" style="background-color: #F6F7FB;">
+						<div class="m-two-X-Pic">
+							<figure class="img-top a-fadeInLeft">
+								<img src="images/show06.jpg" />
+							</figure>
+							<figure class="img-bottom a-fadeInRight">
+								<img src="images/show07.jpg" />
+							</figure>
+						</div>
+					</div>
+				</section>
+				<section class="m-page f-hide">
+					<div class="page-con j-txtWrap lazy-finish" style="background-color: #F6F7FB;">
+						<div class="m-two-X-Pic">
+							<figure class="img-top a-fadeInDown">
+								<img src="images/show08.jpg" />
+							</figure>
+						</div>
+					</div>
+				</section>
+				<section class="m-page f-hide">
+					<div class="page-con j-txtWrap lazy-finish" style="background-color: #F6F7FB;">
+						<div class="m-fourPic">
+							<figure class="img-left-top a-fadeInLeft">
+								<img src="images/show09.jpg" />
+							</figure>
+							<figure class="img-left-bottom a-fadeInUp a-delay-1s">
+								<img src="images/show10.jpg" />
+							</figure>
+							<figure class="img-right a-fadeInDown a-delay-0s5">
+								<img src="images/show11.jpg" />
+							</figure>
+							<figure class="img-bottom a-fadeInRight a-delay-1s5">
+								<img src="images/show12.jpg" />
+							</figure>
+						</div>
+					</div>
+				</section>
+				<section class="m-page f-hide">
+					<div class="page-con j-txtWrap lazy-finish" style="background-color: #F6F7FB;">
+						<div class="m-onePicAndText">
+								<figure class="img-y a-zoomIn">
+									<img src="images/show13.jpg" />
+								</figure>
+							<p class="p-content p-content-y a-zoomIn a-delay-1s5">我们的夏天才刚刚开始！
+								<br/>一切向着美好的方向前进！</p>
+						</div>
+					</div>
+				</section>
+				<section class="m-page f-hide">
+					<div class="page-con j-txtWrap lazy-finish" style="background-color: #F6F7FB;">
+						<div class="m-picList">
+							<ul>
+								<li class="a-zoomIn a-delay-0s4">
+									<img src="images/show01.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-0s6">
+									<img src="images/show02.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-0s8">
+									<img src="images/show03.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-1s">
+									<img src="images/show04.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-1s2">
+									<img src="images/show05.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-1s4">
+									<img src="images/show06.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-1s6">
+									<img src="images/show07.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-1s8">
+									<img src="images/show08.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-2s">
+									<img src="images/show09.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-2s2">
+									<img src="images/show10.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-2s4">
+									<img src="images/show11.jpg" />
+								</li>
+								<li class="a-zoomIn a-delay-2s6">
+									<img src="images/show12.jpg" />
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section class="m-page f-hide">
+					<div class="page-con j-txtWrap lazy-finish">
+						<div class="m-linkUs">
+							<figure class="img-QRcode a-wobble a-delay-0s5">
+								<img src="images/QRcode.JPG" />
+							</figure>
+							<div class="bigTxt-btn">
+								<a href="http://www.ailvgo.com/">快来加入我们吧！</a>
+							</div>
+						</div>
+
+					</div>
+				</section>
+
+			</div>
+		</section>
+		<!-- page页面内容 end-->
+		<!--脚本加载-->
+		<script src="js/coffee.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/99_main.js" type="text/javascript" charset="utf-8" defer＝ 'defer'=""></script>
+		<!--脚本加载 end-->
+		<!--pageLoading-->
+		<section class="u-pageLoading"><img src="images/load.gif" alt="loading"></section>
+		<!--pageLoading end-->
+	</body>
+
+</html>
